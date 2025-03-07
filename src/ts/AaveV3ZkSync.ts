@@ -17,14 +17,14 @@ export const ACL_ADMIN = '0x04cE39789e11a49595cD0ECEf6f4Bd54ABF4d020';
 // IACLManager https://era.zksync.network/address/0xc6150b63c2F02528d4A969a248710A4658ed7928
 export const ACL_MANAGER = '0xc6150b63c2F02528d4A969a248710A4658ed7928';
 
-// IPoolDataProvider https://era.zksync.network/address/0x5F2A704cE47B373c908fE8A29514249469b52b99
-export const AAVE_PROTOCOL_DATA_PROVIDER = '0x5F2A704cE47B373c908fE8A29514249469b52b99';
+// IPoolDataProvider https://era.zksync.network/address/0xf79473ea6ef2C9537027bAe2f6E07d67dD9999E0
+export const AAVE_PROTOCOL_DATA_PROVIDER = '0xf79473ea6ef2C9537027bAe2f6E07d67dD9999E0';
 
-// https://era.zksync.network/address/0x79Bef43a562047B8FDF6335b28Fa61820A442fD6
-export const POOL_IMPL = '0x79Bef43a562047B8FDF6335b28Fa61820A442fD6';
+// https://era.zksync.network/address/0xc38b6318C434a362D16B635e2d2C2D58764f7a43
+export const POOL_IMPL = '0xc38b6318C434a362D16B635e2d2C2D58764f7a43';
 
-// https://era.zksync.network/address/0xBc4c49630350F67D7Ec88785E5DF9A57c78a1b7d
-export const POOL_CONFIGURATOR_IMPL = '0xBc4c49630350F67D7Ec88785E5DF9A57c78a1b7d';
+// https://era.zksync.network/address/0xf994D6bee2F5F98a068985C008Cf0e5fBa132700
+export const POOL_CONFIGURATOR_IMPL = '0xf994D6bee2F5F98a068985C008Cf0e5fBa132700';
 
 // https://era.zksync.network/address/0x37c972C9dDfC2138EBe33eC19dba063AB9f8966e
 export const DEFAULT_INCENTIVES_CONTROLLER = '0x37c972C9dDfC2138EBe33eC19dba063AB9f8966e';
@@ -56,14 +56,17 @@ export const UI_POOL_DATA_PROVIDER = '0x6fCDa2646d6E4a42b1663d219811fC96AE3A0ec8
 // https://era.zksync.network/address/0xcb8Dc3C135e59B1252F057da44A8f43EE6B0dAB0
 export const WALLET_BALANCE_PROVIDER = '0xcb8Dc3C135e59B1252F057da44A8f43EE6B0dAB0';
 
-// https://era.zksync.network/address/0xD5f6c8D402E0a0222f7FA132F9e80fDCC074df5C
-export const WETH_GATEWAY = '0xD5f6c8D402E0a0222f7FA132F9e80fDCC074df5C';
-
-// https://era.zksync.network/address/0x1Bc8dbF1f5aF8094Aa166098131116CaAd6B22F9
-export const STATIC_A_TOKEN_FACTORY = '0x1Bc8dbF1f5aF8094Aa166098131116CaAd6B22F9';
+// https://era.zksync.network/address/0xAE2b00D676130Bdf22582781BbBA8f4F21e8B0ff
+export const WETH_GATEWAY = '0xAE2b00D676130Bdf22582781BbBA8f4F21e8B0ff';
 
 // https://era.zksync.network/address/0x05c77Cf62346329a157d7A6F874464D049CECb26
 export const RISK_STEWARD = '0x05c77Cf62346329a157d7A6F874464D049CECb26';
+
+// https://era.zksync.network/address/0x452E8E84bF852513585f893931CBD9A409Cd3459
+export const DUST_BIN = '0x452E8E84bF852513585f893931CBD9A409Cd3459';
+
+// https://era.zksync.network/address/0x2a549daDfe66AcFf25Bb0Cf0C989AAD0Dc547ceb
+export const CLINIC_STEWARD = '0x2a549daDfe66AcFf25Bb0Cf0C989AAD0Dc547ceb';
 
 export const CHAIN_ID = 324;
 export const ASSETS = {
@@ -112,6 +115,24 @@ export const ASSETS = {
     INTEREST_RATE_STRATEGY: '0x57815Ab06D846d7dECd326Ee541CD06144FED237',
     ORACLE: '0xD1ce60dc8AE060DDD17cA8716C96f193bC88DD13',
   },
+  weETH: {
+    decimals: 18,
+    id: 5,
+    UNDERLYING: '0xc1Fa6E2E8667d9bE0Ca938a54c7E0285E9Df924a',
+    A_TOKEN: '0xE818A67EE5c0531AFaa31Aa6e20bcAC36227A641',
+    V_TOKEN: '0xf31E1599b4480d07Fa96a7248c4f05cA84DA7fa8',
+    INTEREST_RATE_STRATEGY: '0x57815Ab06D846d7dECd326Ee541CD06144FED237',
+    ORACLE: '0x32aF9A0a47B332761c8C90E9eC9f53e46e852b2B',
+  },
+  sUSDe: {
+    decimals: 18,
+    id: 6,
+    UNDERLYING: '0xAD17Da2f6Ac76746EF261E835C50b2651ce36DA8',
+    A_TOKEN: '0xF3c9d58B76AC6Ee6811520021e9A9318c49E4CFa',
+    V_TOKEN: '0xDeBb4ddaaaB1676775214552a7a05D6A13f905Da',
+    INTEREST_RATE_STRATEGY: '0x57815Ab06D846d7dECd326Ee541CD06144FED237',
+    ORACLE: '0xDaec4cC3a41E423d678428A8Bb29fa1ADF26869a',
+  },
 } as const;
 export const E_MODES = {
   '1': {
@@ -126,6 +147,16 @@ export const E_MODES = {
       '0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91',
       '0x703b52F2b28fEbcB60E1372858AF5b18849FE867',
     ],
+    ltv: 9000,
+    liquidationThreshold: 9300,
+    liquidationBonus: 10100,
+  },
+  '2': {
+    label: 'weETH correlated',
+    collateralBitmap: '32',
+    collateralAssets: ['0xc1Fa6E2E8667d9bE0Ca938a54c7E0285E9Df924a'],
+    borrowableBitmap: '4',
+    borrowableAssets: ['0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91'],
     ltv: 9000,
     liquidationThreshold: 9300,
     liquidationBonus: 10100,
