@@ -4,62 +4,42 @@ exports[`verification > should have all contracts verified except for the known 
 [
   {
     "item": {
-      "chainId": 42220,
+      "chainId": 1101,
       "path": [
-        "GovernanceV3Celo",
-        "GOVERNANCE_GUARDIAN",
+        "GovernanceV3PolygonZkEvm",
+        "PC_DATA_HELPER",
       ],
-      "value": "0x056E4C4E80D1D14a637ccbD0412CDAAEc5B51F4E",
+      "value": "0xF1c11BE0b4466728DDb7991A0Ac5265646ec9672",
     },
   },
   {
     "item": {
-      "chainId": 324,
+      "chainId": 1,
       "path": [
-        "AaveV3ZkSync",
-        "DUST_BIN",
+        "AaveV2EthereumAMM",
+        "UI_INCENTIVE_DATA_PROVIDER",
       ],
-      "value": "0x452E8E84bF852513585f893931CBD9A409Cd3459",
+      "value": "0xD01ab9a6577E1D84F142e44D49380e23A340387d",
     },
   },
   {
     "item": {
-      "chainId": 146,
+      "chainId": 137,
       "path": [
-        "AaveV3Sonic",
-        "STATA_FACTORY",
+        "AaveV2Polygon",
+        "UI_INCENTIVE_DATA_PROVIDER",
       ],
-      "value": "0xFeeb6FE430B7523fEF2a38327241eE7153779535",
+      "value": "0x645654D59A5226CBab969b1f5431aA47CBf64ab8",
     },
   },
   {
     "item": {
-      "chainId": 146,
+      "chainId": 43114,
       "path": [
-        "AaveV3Sonic",
-        "DUST_BIN",
+        "AaveV2Avalanche",
+        "UI_INCENTIVE_DATA_PROVIDER",
       ],
-      "value": "0x62aDD9C6B511085C67515ebB799b51c4cf2d786F",
-    },
-  },
-  {
-    "item": {
-      "chainId": 42220,
-      "path": [
-        "MiscCelo",
-        "PROTOCOL_GUARDIAN",
-      ],
-      "value": "0x88E7aB6ee481Cf92e548c0e1169F824F99142c85",
-    },
-  },
-  {
-    "item": {
-      "chainId": 5000,
-      "path": [
-        "MiscMantle",
-        "PROTOCOL_GUARDIAN",
-      ],
-      "value": "0x172867391d690Eb53896623DaD22208624230686",
+      "value": "0x11979886A6dBAE27D7a72c49fCF3F23240D647bF",
     },
   },
 ]

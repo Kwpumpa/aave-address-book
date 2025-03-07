@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0;
 
-import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager, ICollector} from './AaveV3.sol';
+import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager} from './AaveV3.sol';
+import {ICollector} from './common/ICollector.sol';
 library AaveV3ZkSync {
   // https://era.zksync.network/address/0x2A3948BB219D6B2Fa83D64100006391a96bE6cb7
   IPoolAddressesProvider internal constant POOL_ADDRESSES_PROVIDER =
@@ -25,15 +26,15 @@ library AaveV3ZkSync {
   IACLManager internal constant ACL_MANAGER =
     IACLManager(0xc6150b63c2F02528d4A969a248710A4658ed7928);
 
-  // https://era.zksync.network/address/0xf79473ea6ef2C9537027bAe2f6E07d67dD9999E0
+  // https://era.zksync.network/address/0x5F2A704cE47B373c908fE8A29514249469b52b99
   IPoolDataProvider internal constant AAVE_PROTOCOL_DATA_PROVIDER =
-    IPoolDataProvider(0xf79473ea6ef2C9537027bAe2f6E07d67dD9999E0);
+    IPoolDataProvider(0x5F2A704cE47B373c908fE8A29514249469b52b99);
 
-  // https://era.zksync.network/address/0xc38b6318C434a362D16B635e2d2C2D58764f7a43
-  address internal constant POOL_IMPL = 0xc38b6318C434a362D16B635e2d2C2D58764f7a43;
+  // https://era.zksync.network/address/0x79Bef43a562047B8FDF6335b28Fa61820A442fD6
+  address internal constant POOL_IMPL = 0x79Bef43a562047B8FDF6335b28Fa61820A442fD6;
 
-  // https://era.zksync.network/address/0xf994D6bee2F5F98a068985C008Cf0e5fBa132700
-  address internal constant POOL_CONFIGURATOR_IMPL = 0xf994D6bee2F5F98a068985C008Cf0e5fBa132700;
+  // https://era.zksync.network/address/0xBc4c49630350F67D7Ec88785E5DF9A57c78a1b7d
+  address internal constant POOL_CONFIGURATOR_IMPL = 0xBc4c49630350F67D7Ec88785E5DF9A57c78a1b7d;
 
   // https://era.zksync.network/address/0x37c972C9dDfC2138EBe33eC19dba063AB9f8966e
   address internal constant DEFAULT_INCENTIVES_CONTROLLER =
@@ -68,17 +69,14 @@ library AaveV3ZkSync {
   // https://era.zksync.network/address/0xcb8Dc3C135e59B1252F057da44A8f43EE6B0dAB0
   address internal constant WALLET_BALANCE_PROVIDER = 0xcb8Dc3C135e59B1252F057da44A8f43EE6B0dAB0;
 
-  // https://era.zksync.network/address/0xAE2b00D676130Bdf22582781BbBA8f4F21e8B0ff
-  address internal constant WETH_GATEWAY = 0xAE2b00D676130Bdf22582781BbBA8f4F21e8B0ff;
+  // https://era.zksync.network/address/0xD5f6c8D402E0a0222f7FA132F9e80fDCC074df5C
+  address internal constant WETH_GATEWAY = 0xD5f6c8D402E0a0222f7FA132F9e80fDCC074df5C;
+
+  // https://era.zksync.network/address/0x1Bc8dbF1f5aF8094Aa166098131116CaAd6B22F9
+  address internal constant STATIC_A_TOKEN_FACTORY = 0x1Bc8dbF1f5aF8094Aa166098131116CaAd6B22F9;
 
   // https://era.zksync.network/address/0x05c77Cf62346329a157d7A6F874464D049CECb26
   address internal constant RISK_STEWARD = 0x05c77Cf62346329a157d7A6F874464D049CECb26;
-
-  // https://era.zksync.network/address/0x452E8E84bF852513585f893931CBD9A409Cd3459
-  address internal constant DUST_BIN = 0x452E8E84bF852513585f893931CBD9A409Cd3459;
-
-  // https://era.zksync.network/address/0x2a549daDfe66AcFf25Bb0Cf0C989AAD0Dc547ceb
-  address internal constant CLINIC_STEWARD = 0x2a549daDfe66AcFf25Bb0Cf0C989AAD0Dc547ceb;
 }
 library AaveV3ZkSyncAssets {
   // https://era.zksync.network/address/0x1d17CBcF0D6D143135aE902365D2E5e2A16538D4
@@ -169,69 +167,31 @@ library AaveV3ZkSyncAssets {
 
   // https://era.zksync.network/address/0x57815Ab06D846d7dECd326Ee541CD06144FED237
   address internal constant ZK_INTEREST_RATE_STRATEGY = 0x57815Ab06D846d7dECd326Ee541CD06144FED237;
-
-  // https://era.zksync.network/address/0xc1Fa6E2E8667d9bE0Ca938a54c7E0285E9Df924a
-  address internal constant weETH_UNDERLYING = 0xc1Fa6E2E8667d9bE0Ca938a54c7E0285E9Df924a;
-
-  uint8 internal constant weETH_DECIMALS = 18;
-
-  // https://era.zksync.network/address/0xE818A67EE5c0531AFaa31Aa6e20bcAC36227A641
-  address internal constant weETH_A_TOKEN = 0xE818A67EE5c0531AFaa31Aa6e20bcAC36227A641;
-
-  // https://era.zksync.network/address/0xf31E1599b4480d07Fa96a7248c4f05cA84DA7fa8
-  address internal constant weETH_V_TOKEN = 0xf31E1599b4480d07Fa96a7248c4f05cA84DA7fa8;
-
-  // https://era.zksync.network/address/0x32aF9A0a47B332761c8C90E9eC9f53e46e852b2B
-  address internal constant weETH_ORACLE = 0x32aF9A0a47B332761c8C90E9eC9f53e46e852b2B;
-
-  // https://era.zksync.network/address/0x57815Ab06D846d7dECd326Ee541CD06144FED237
-  address internal constant weETH_INTEREST_RATE_STRATEGY =
-    0x57815Ab06D846d7dECd326Ee541CD06144FED237;
-
-  // https://era.zksync.network/address/0xAD17Da2f6Ac76746EF261E835C50b2651ce36DA8
-  address internal constant sUSDe_UNDERLYING = 0xAD17Da2f6Ac76746EF261E835C50b2651ce36DA8;
-
-  uint8 internal constant sUSDe_DECIMALS = 18;
-
-  // https://era.zksync.network/address/0xF3c9d58B76AC6Ee6811520021e9A9318c49E4CFa
-  address internal constant sUSDe_A_TOKEN = 0xF3c9d58B76AC6Ee6811520021e9A9318c49E4CFa;
-
-  // https://era.zksync.network/address/0xDeBb4ddaaaB1676775214552a7a05D6A13f905Da
-  address internal constant sUSDe_V_TOKEN = 0xDeBb4ddaaaB1676775214552a7a05D6A13f905Da;
-
-  // https://era.zksync.network/address/0xDaec4cC3a41E423d678428A8Bb29fa1ADF26869a
-  address internal constant sUSDe_ORACLE = 0xDaec4cC3a41E423d678428A8Bb29fa1ADF26869a;
-
-  // https://era.zksync.network/address/0x57815Ab06D846d7dECd326Ee541CD06144FED237
-  address internal constant sUSDe_INTEREST_RATE_STRATEGY =
-    0x57815Ab06D846d7dECd326Ee541CD06144FED237;
 }
 library AaveV3ZkSyncEModes {
   uint8 internal constant NONE = 0;
 
   uint8 internal constant ETH_CORRELATED = 1;
-
-  uint8 internal constant WEETH_CORRELATED = 2;
 }
 library AaveV3ZkSyncExternalLibraries {
-  // https://era.zksync.network/address/0x4DFc5c694D5186De1616E207618e0464023a10A4
-  address internal constant FLASHLOAN_LOGIC = 0x4DFc5c694D5186De1616E207618e0464023a10A4;
+  // https://era.zksync.network/address/0xcE53459E8734Df93399A425183Ee1860Ca8c2D0b
+  address internal constant FLASHLOAN_LOGIC = 0xcE53459E8734Df93399A425183Ee1860Ca8c2D0b;
 
-  // https://era.zksync.network/address/0x5140E3B094704C400dE13D8d7fa06535e711955f
-  address internal constant BORROW_LOGIC = 0x5140E3B094704C400dE13D8d7fa06535e711955f;
+  // https://era.zksync.network/address/0xc3Ba0a556e0813BBf0741CdaD6086ca1023cd6d3
+  address internal constant BORROW_LOGIC = 0xc3Ba0a556e0813BBf0741CdaD6086ca1023cd6d3;
 
-  // https://era.zksync.network/address/0xA3fE5b3543cBD4418AcB5a0Ddf3C2513Aa778e60
-  address internal constant BRIDGE_LOGIC = 0xA3fE5b3543cBD4418AcB5a0Ddf3C2513Aa778e60;
+  // https://era.zksync.network/address/0x345A778167524995d6788a9a0e1D0eeb7CbFE496
+  address internal constant BRIDGE_LOGIC = 0x345A778167524995d6788a9a0e1D0eeb7CbFE496;
 
-  // https://era.zksync.network/address/0x6877DEF1aD0f25dCec4F61FB60f5BB1682552412
-  address internal constant E_MODE_LOGIC = 0x6877DEF1aD0f25dCec4F61FB60f5BB1682552412;
+  // https://era.zksync.network/address/0xA2C266Cd25296A7174134B0a6d894e250c830504
+  address internal constant E_MODE_LOGIC = 0xA2C266Cd25296A7174134B0a6d894e250c830504;
 
-  // https://era.zksync.network/address/0xd5Fa63B509811Af4B66b51da0cB391598556690A
-  address internal constant LIQUIDATION_LOGIC = 0xd5Fa63B509811Af4B66b51da0cB391598556690A;
+  // https://era.zksync.network/address/0x0C0191Dd96eD7Ef86D1cC319eb68f127C196A6ee
+  address internal constant LIQUIDATION_LOGIC = 0x0C0191Dd96eD7Ef86D1cC319eb68f127C196A6ee;
 
-  // https://era.zksync.network/address/0xD8F86743881b374b1ac2F680381D164a96e3ae01
-  address internal constant POOL_LOGIC = 0xD8F86743881b374b1ac2F680381D164a96e3ae01;
+  // https://era.zksync.network/address/0xd60e89f5b8BD0E46029FD127741DA136b3A574D7
+  address internal constant POOL_LOGIC = 0xd60e89f5b8BD0E46029FD127741DA136b3A574D7;
 
-  // https://era.zksync.network/address/0x431Ed010Df744d6D9912B4315AEa5f14a11b7a3e
-  address internal constant SUPPLY_LOGIC = 0x431Ed010Df744d6D9912B4315AEa5f14a11b7a3e;
+  // https://era.zksync.network/address/0x20EA931cE718b5f3bcdCfc3B7D2685f6a853a55D
+  address internal constant SUPPLY_LOGIC = 0x20EA931cE718b5f3bcdCfc3B7D2685f6a853a55D;
 }

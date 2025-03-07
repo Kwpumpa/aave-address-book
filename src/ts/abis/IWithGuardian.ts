@@ -45,26 +45,4 @@ export const IWithGuardian_ABI = [
     ],
     anonymous: false,
   },
-  {
-    type: 'error',
-    name: 'OnlyGuardianInvalidCaller',
-    inputs: [
-      {
-        name: 'account',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-  },
-  {
-    type: 'error',
-    name: 'OnlyGuardianOrOwnerInvalidCaller',
-    inputs: [
-      {
-        name: 'account',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-  },
 ] as const;

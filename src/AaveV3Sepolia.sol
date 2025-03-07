@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0;
 
-import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager, ICollector} from './AaveV3.sol';
+import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager} from './AaveV3.sol';
+import {ICollector} from './common/ICollector.sol';
 library AaveV3Sepolia {
   // https://sepolia.etherscan.io/address/0x012bAC54348C0E635dCAc9D5FB99f06F24136C9A
   IPoolAddressesProvider internal constant POOL_ADDRESSES_PROVIDER =
@@ -68,8 +69,7 @@ library AaveV3Sepolia {
   address internal constant WETH_GATEWAY = 0x387d311e47e80b498169e6fb51d3193167d89F7D;
 
   // https://sepolia.etherscan.io/address/0xd210dFB43B694430B8d31762B5199e30c31266C8
-  address internal constant LEGACY_STATIC_A_TOKEN_FACTORY =
-    0xd210dFB43B694430B8d31762B5199e30c31266C8;
+  address internal constant STATIC_A_TOKEN_FACTORY = 0xd210dFB43B694430B8d31762B5199e30c31266C8;
 
   // https://sepolia.etherscan.io/address/0x69B9843A16a6E9933125EBD97659BA3CCbE2Ef8A
   address internal constant UI_GHO_DATA_PROVIDER = 0x69B9843A16a6E9933125EBD97659BA3CCbE2Ef8A;

@@ -246,24 +246,6 @@ export const IPool_ABI = [
   },
   {
     type: 'function',
-    name: 'eliminateReserveDeficit',
-    inputs: [
-      {
-        name: 'asset',
-        type: 'address',
-        internalType: 'address',
-      },
-      {
-        name: 'amount',
-        type: 'uint256',
-        internalType: 'uint256',
-      },
-    ],
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
     name: 'finalizeTransfer',
     inputs: [
       {
@@ -610,7 +592,7 @@ export const IPool_ABI = [
         internalType: 'uint40',
       },
     ],
-    stateMutability: 'view',
+    stateMutability: 'nonpayable',
   },
   {
     type: 'function',
@@ -629,25 +611,6 @@ export const IPool_ABI = [
     type: 'function',
     name: 'getPoolLogic',
     inputs: [],
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'getReserveAToken',
-    inputs: [
-      {
-        name: 'asset',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
     outputs: [
       {
         name: '',
@@ -781,7 +744,7 @@ export const IPool_ABI = [
   },
   {
     type: 'function',
-    name: 'getReserveDeficit',
+    name: 'getReserveDataExtended',
     inputs: [
       {
         name: 'asset',
@@ -792,8 +755,102 @@ export const IPool_ABI = [
     outputs: [
       {
         name: '',
-        type: 'uint256',
-        internalType: 'uint256',
+        type: 'tuple',
+        internalType: 'struct DataTypes.ReserveData',
+        components: [
+          {
+            name: 'configuration',
+            type: 'tuple',
+            internalType: 'struct DataTypes.ReserveConfigurationMap',
+            components: [
+              {
+                name: 'data',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+            ],
+          },
+          {
+            name: 'liquidityIndex',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'currentLiquidityRate',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'variableBorrowIndex',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'currentVariableBorrowRate',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: '__deprecatedStableBorrowRate',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'lastUpdateTimestamp',
+            type: 'uint40',
+            internalType: 'uint40',
+          },
+          {
+            name: 'id',
+            type: 'uint16',
+            internalType: 'uint16',
+          },
+          {
+            name: 'liquidationGracePeriodUntil',
+            type: 'uint40',
+            internalType: 'uint40',
+          },
+          {
+            name: 'aTokenAddress',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: '__deprecatedStableDebtTokenAddress',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'variableDebtTokenAddress',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'interestRateStrategyAddress',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'accruedToTreasury',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'unbacked',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'isolationModeTotalDebt',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+          {
+            name: 'virtualUnderlyingBalance',
+            type: 'uint128',
+            internalType: 'uint128',
+          },
+        ],
       },
     ],
     stateMutability: 'view',
@@ -832,25 +889,6 @@ export const IPool_ABI = [
         name: '',
         type: 'uint256',
         internalType: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'getReserveVariableDebtToken',
-    inputs: [
-      {
-        name: 'asset',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-        internalType: 'address',
       },
     ],
     stateMutability: 'view',
@@ -1587,56 +1625,6 @@ export const IPool_ABI = [
         type: 'uint16',
         indexed: true,
         internalType: 'uint16',
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: 'event',
-    name: 'DeficitCovered',
-    inputs: [
-      {
-        name: 'reserve',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-      {
-        name: 'caller',
-        type: 'address',
-        indexed: false,
-        internalType: 'address',
-      },
-      {
-        name: 'amountCovered',
-        type: 'uint256',
-        indexed: false,
-        internalType: 'uint256',
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: 'event',
-    name: 'DeficitCreated',
-    inputs: [
-      {
-        name: 'user',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-      {
-        name: 'debtAsset',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-      {
-        name: 'amountCreated',
-        type: 'uint256',
-        indexed: false,
-        internalType: 'uint256',
       },
     ],
     anonymous: false,

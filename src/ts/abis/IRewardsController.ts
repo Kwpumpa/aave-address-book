@@ -244,7 +244,7 @@ export const IRewardsController_ABI = [
           {
             name: 'rewardOracle',
             type: 'address',
-            internalType: 'contract AggregatorInterface',
+            internalType: 'contract IEACAggregatorProxy',
           },
         ],
       },
@@ -675,7 +675,7 @@ export const IRewardsController_ABI = [
       {
         name: 'rewardOracle',
         type: 'address',
-        internalType: 'contract AggregatorInterface',
+        internalType: 'contract IEACAggregatorProxy',
       },
     ],
     outputs: [],
