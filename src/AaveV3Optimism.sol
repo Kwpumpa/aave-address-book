@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0;
 
-import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager, ICollector} from './AaveV3.sol';
+import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager} from './AaveV3.sol';
+import {ICollector} from './common/ICollector.sol';
 library AaveV3Optimism {
   // https://optimistic.etherscan.io/address/0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb
   IPoolAddressesProvider internal constant POOL_ADDRESSES_PROVIDER =
@@ -28,15 +29,15 @@ library AaveV3Optimism {
   IACLManager internal constant ACL_MANAGER =
     IACLManager(0xa72636CbcAa8F5FF95B2cc47F3CDEe83F3294a0B);
 
-  // https://optimistic.etherscan.io/address/0x14496b405D62c24F91f04Cda1c69Dc526D56fDE5
+  // https://optimistic.etherscan.io/address/0x7F23D86Ee20D869112572136221e173428DD740B
   IPoolDataProvider internal constant AAVE_PROTOCOL_DATA_PROVIDER =
-    IPoolDataProvider(0x14496b405D62c24F91f04Cda1c69Dc526D56fDE5);
+    IPoolDataProvider(0x7F23D86Ee20D869112572136221e173428DD740B);
 
-  // https://optimistic.etherscan.io/address/0x7f775bb7af2e7E09D5Dc9506c95516159a5cA0D0
-  address internal constant POOL_IMPL = 0x7f775bb7af2e7E09D5Dc9506c95516159a5cA0D0;
+  // https://optimistic.etherscan.io/address/0x7A7eF57479123f26DB6a0e3EFbF8A3562EDD65BE
+  address internal constant POOL_IMPL = 0x7A7eF57479123f26DB6a0e3EFbF8A3562EDD65BE;
 
-  // https://optimistic.etherscan.io/address/0xE5e48Ad1F9D1A894188b483DcF91f4FaD6AbA43b
-  address internal constant POOL_CONFIGURATOR_IMPL = 0xE5e48Ad1F9D1A894188b483DcF91f4FaD6AbA43b;
+  // https://optimistic.etherscan.io/address/0x4816b2C2895f97fB918f1aE7Da403750a0eE372e
+  address internal constant POOL_CONFIGURATOR_IMPL = 0x4816b2C2895f97fB918f1aE7Da403750a0eE372e;
 
   // https://optimistic.etherscan.io/address/0x929EC64c34a17401F460460D4B9390518E5B473e
   address internal constant DEFAULT_INCENTIVES_CONTROLLER =
@@ -82,8 +83,7 @@ library AaveV3Optimism {
     0x5d4D4007A4c6336550DdAa2a7c0d5e7972eebd16;
 
   // https://optimistic.etherscan.io/address/0x22D76094730fA377184100EFB8CEfC673B89B372
-  address internal constant LEGACY_STATIC_A_TOKEN_FACTORY =
-    0x22D76094730fA377184100EFB8CEfC673B89B372;
+  address internal constant STATIC_A_TOKEN_FACTORY = 0x22D76094730fA377184100EFB8CEfC673B89B372;
 
   // https://optimistic.etherscan.io/address/0x830C5A67a0C95D69dA5fb7801Ac1773c6fB53857
   address internal constant SWAP_COLLATERAL_ADAPTER = 0x830C5A67a0C95D69dA5fb7801Ac1773c6fB53857;
@@ -97,20 +97,11 @@ library AaveV3Optimism {
   // https://optimistic.etherscan.io/address/0xBc790382B3686abffE4be14A030A96aC6154023a
   address internal constant WALLET_BALANCE_PROVIDER = 0xBc790382B3686abffE4be14A030A96aC6154023a;
 
-  // https://optimistic.etherscan.io/address/0x5f2508cAE9923b02316254026CD43d7902866725
-  address internal constant WETH_GATEWAY = 0x5f2508cAE9923b02316254026CD43d7902866725;
+  // https://optimistic.etherscan.io/address/0x60eE8b61a13c67d0191c851BEC8F0bc850160710
+  address internal constant WETH_GATEWAY = 0x60eE8b61a13c67d0191c851BEC8F0bc850160710;
 
   // https://optimistic.etherscan.io/address/0x78F8Bd884C3D738B74B420540659c82f392820e0
   address internal constant WITHDRAW_SWAP_ADAPTER = 0x78F8Bd884C3D738B74B420540659c82f392820e0;
-
-  // https://optimistic.etherscan.io/address/0x170d6D6FCAbF0Ba3932a03d5f470c16c39c18e39
-  address internal constant STATA_FACTORY = 0x170d6D6FCAbF0Ba3932a03d5f470c16c39c18e39;
-
-  // https://optimistic.etherscan.io/address/0x9601de16a38B6d2Dd5d5f313EEDb4fcAf9718D6C
-  address internal constant DUST_BIN = 0x9601de16a38B6d2Dd5d5f313EEDb4fcAf9718D6C;
-
-  // https://optimistic.etherscan.io/address/0xD835fb6f9823b4054Ccf30403De76AA8abcd00b8
-  address internal constant CLINIC_STEWARD = 0xD835fb6f9823b4054Ccf30403De76AA8abcd00b8;
 }
 library AaveV3OptimismAssets {
   // https://optimistic.etherscan.io/address/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1
@@ -412,24 +403,24 @@ library AaveV3OptimismEModes {
   uint8 internal constant ETH_CORRELATED = 2;
 }
 library AaveV3OptimismExternalLibraries {
-  // https://optimistic.etherscan.io/address/0x34039100cc9584Ae5D741d322e16d0d18CEE8770
-  address internal constant FLASHLOAN_LOGIC = 0x34039100cc9584Ae5D741d322e16d0d18CEE8770;
+  // https://optimistic.etherscan.io/address/0xb32381feFFF45eE9F47fD2f2cF83C832637d6EF0
+  address internal constant FLASHLOAN_LOGIC = 0xb32381feFFF45eE9F47fD2f2cF83C832637d6EF0;
 
-  // https://optimistic.etherscan.io/address/0x62325c94E1c49dcDb5937726aB5D8A4c37bCAd36
-  address internal constant BORROW_LOGIC = 0x62325c94E1c49dcDb5937726aB5D8A4c37bCAd36;
+  // https://optimistic.etherscan.io/address/0x4c52FE2162200bf26c314d7bbd8611699139d553
+  address internal constant BORROW_LOGIC = 0x4c52FE2162200bf26c314d7bbd8611699139d553;
 
-  // https://optimistic.etherscan.io/address/0x621Ef86D8A5C693a06295BC288B95C12D4CE4994
-  address internal constant BRIDGE_LOGIC = 0x621Ef86D8A5C693a06295BC288B95C12D4CE4994;
+  // https://optimistic.etherscan.io/address/0x97dCbFaE5372A63128F141E8C0BC2c871Ca5F604
+  address internal constant BRIDGE_LOGIC = 0x97dCbFaE5372A63128F141E8C0BC2c871Ca5F604;
 
-  // https://optimistic.etherscan.io/address/0xC31d2362fAeD85dF79d0bec99693D0EB0Abd3f74
-  address internal constant E_MODE_LOGIC = 0xC31d2362fAeD85dF79d0bec99693D0EB0Abd3f74;
+  // https://optimistic.etherscan.io/address/0x88F864670De467aA73CD45325F9652C578C8AB85
+  address internal constant E_MODE_LOGIC = 0x88F864670De467aA73CD45325F9652C578C8AB85;
 
-  // https://optimistic.etherscan.io/address/0x4731bF01583F991278692E8727d0700a00A1fBBf
-  address internal constant LIQUIDATION_LOGIC = 0x4731bF01583F991278692E8727d0700a00A1fBBf;
+  // https://optimistic.etherscan.io/address/0x80d16970B31243Fe67DaB028115f3E4c3E3510Ad
+  address internal constant LIQUIDATION_LOGIC = 0x80d16970B31243Fe67DaB028115f3E4c3E3510Ad;
 
-  // https://optimistic.etherscan.io/address/0xf8C97539934ee66a67C26010e8e027D77E821B0C
-  address internal constant POOL_LOGIC = 0xf8C97539934ee66a67C26010e8e027D77E821B0C;
+  // https://optimistic.etherscan.io/address/0xA58FB47bE9074828215A173564C0CD10f6F249bf
+  address internal constant POOL_LOGIC = 0xA58FB47bE9074828215A173564C0CD10f6F249bf;
 
-  // https://optimistic.etherscan.io/address/0x185477906B46D9b8DE0DEB73A1bBfb87b5b51BC3
-  address internal constant SUPPLY_LOGIC = 0x185477906B46D9b8DE0DEB73A1bBfb87b5b51BC3;
+  // https://optimistic.etherscan.io/address/0x2b22E425C1322fbA0DbF17bb1dA25d71811EE7ba
+  address internal constant SUPPLY_LOGIC = 0x2b22E425C1322fbA0DbF17bb1dA25d71811EE7ba;
 }

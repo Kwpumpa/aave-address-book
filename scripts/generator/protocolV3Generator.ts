@@ -59,7 +59,7 @@ export async function generateProtocolV3Library(poolConfig: PoolConfig) {
   }
   const poolAddresses = await fetchPoolAddresses(client, poolConfig);
   const reservesData = await fetchTokens(client, poolConfig, poolAddresses);
-  const additionalTokenInfo = await inferAdditionalTokenInfo(client, poolConfig, reservesData);
+  const additionalTokenInfo = await inferAdditionalTokenInfo(client, reservesData);
   const name = `AaveV3${poolConfig.name}`;
 
   // generate main library
@@ -67,7 +67,8 @@ export async function generateProtocolV3Library(poolConfig: PoolConfig) {
     `./src/${name}.sol`,
     prefixWithGeneratedWarning(
       prefixWithPragma(
-        `import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager, ICollector} from './AaveV3.sol';\n` +
+        `import {IPoolAddressesProvider, IPool, IPoolConfigurator, IAaveOracle, IPoolDataProvider, IACLManager} from './AaveV3.sol';\n` +
+          `import {ICollector} from './common/ICollector.sol';` +
           wrapIntoSolidityLibrary(
             generateSolidityConstants({
               chainId: poolConfig.chainId,
